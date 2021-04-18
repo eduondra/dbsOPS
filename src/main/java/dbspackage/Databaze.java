@@ -11,7 +11,7 @@ public class Databaze {
 
         Statement statement = connection.createStatement();
         ResultSet result = statement.executeQuery(
-                "SELECT druhy.nazev, zvirata.jmeno, zvirata.id FROM zvirata JOIN druhy ON (zvirata.druh = druhy.id) LIMIT 3"
+                "SELECT zvirata.jmeno, druhy.nazev, zvirata.id FROM zvirata JOIN druhy ON (zvirata.druh = druhy.id) WHERE druhy.nazev LIKE 'osel' LIMIT 10"
         );
 
         while(result.next()) {
@@ -21,6 +21,7 @@ public class Databaze {
             int id = result.getInt("id");
 
             System.out.println(druh + ";" + jmeno + ";" + id);
+            System.out.println("---------------------------");
 
         }
 
